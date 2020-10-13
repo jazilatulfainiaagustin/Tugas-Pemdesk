@@ -1,0 +1,42 @@
+import sys 
+from PyQt5.QtWidgets import QApplication,QWidget,QLabel,QFormLayout,QLineEdit,QCheckBox,QRadioButton
+
+def biodata():
+    #inisialisasi pyqt
+    app = QApplication(sys.argv)
+    b = QWidget()
+
+    #menyiapkan label, menempelkan label ke window
+    #settext dan posisi
+    bio = QLabel()
+    bio.setStyleSheet("background-color: #ADD8E6; color:red; font-size: 32px; font:bold;")
+    bio.setText("Input Biodata")
+    
+    #membuat dua kolom dimana kolom kiri berisi label dan kanan berisi inputan
+    label=QFormLayout()
+    label.addRow(bio)
+    
+    #membuat kotak dengan menggunakan QLineEdit dimana kita dapat menginputkan suatu teks dikotak tsb 
+    label.addRow('Name' ,QLineEdit())
+    label.addRow('Address' ,QLineEdit())
+    label.addRow('' ,QLineEdit())
+    
+    #menggunakan QCheckBox untuk membuat Checkbox
+    label.addRow('Hobby' ,QCheckBox('Makan'))
+    label.addRow('' ,QCheckBox('Main'))
+    label.addRow('' ,QCheckBox('Tidur'))
+    
+    #menggunakan QRadioButton untuk membuat Radiobutton
+    label.addRow('Status' ,QRadioButton('Pelajar'))
+    label.addRow('' ,QRadioButton('Pegawai'))
+    label.addRow('' ,QRadioButton('Wiraswasta'))
+    b.setLayout(label)
+
+    #menentukan ukuran window + title dan menampilkan
+    b.setGeometry(50,50,500,500)
+    b.setWindowTitle("PyQt5")
+    b.show()
+    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    biodata()
